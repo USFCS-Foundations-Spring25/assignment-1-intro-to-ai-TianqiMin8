@@ -45,7 +45,7 @@ def monte_carlo_approach(n):
                     win_table[hold_val] += 1
                 # edge case: tie, says player1 win
                 elif player2==player1 :
-                    win_table[hold_val] += 0.5
+                    win_table[hold_val] += 1
 
     for item in win_table.keys():
         print("%d: %f" % (item, win_table[item] / 1000000))
