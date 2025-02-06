@@ -16,6 +16,7 @@ print("Testing wc")
 print("You can run wc from the command line, like so")
 print("wc --strip ~/Documents   or")
 print("wc --strip --pfile=works.pkl ~/Documents")
+# TODO some code to run wc...
 
 print("testing perceptron")
 perceptron.perceptron_training()

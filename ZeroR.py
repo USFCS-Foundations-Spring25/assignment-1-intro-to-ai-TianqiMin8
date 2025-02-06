@@ -1,4 +1,6 @@
 import sys
+import random
+
 
 ## ZeroR - our first learning algorithm.
 ### assume that list_of_examples is a list of strings. For example:
@@ -6,14 +8,38 @@ import sys
 ### your code should get the last element in each string, which is the classification, and return the most common one.
 
 def zeroR(list_of_examples) :
-    return "zeroR" # you fix this.
+    yes = 0
+    no=0
+    for data in list_of_examples:
+        # get the last element of data
+        lis = data.split(',')
+
+        if lis[-1] == "yes\n":
+            yes += 1
+        elif lis[-1] == "no\n":
+            no += 1
+    if yes > no:
+        return "yes"
+    return "no"
 
 ### assume that list_of_examples is a list of strings. For example:
 ### ['outlook,temperature,humidity,windy,play\n', 'sunny,hot,high,FALSE,no\n', 'sunny,hot,high,TRUE,no\n', 'overcast,hot,high,FALSE,yes\n', 'rainy,mild,high,FALSE,yes\n', 'rainy,cool,normal,FALSE,yes\n', 'rainy,cool,normal,TRUE,no\n', 'overcast,cool,normal,TRUE,yes\n', 'sunny,mild,high,FALSE,no\n', 'sunny,cool,normal,FALSE,yes\n', 'rainy,mild,normal,FALSE,yes\n', 'sunny,mild,normal,TRUE,yes\n', 'overcast,mild,high,TRUE,yes\n', 'overcast,hot,normal,FALSE,yes\n', 'rainy,mild,high,TRUE,no\n']
 ### your code should get the last element in each string, which is the classification, and use random.choice() to select one and return it
 
 def randR(list_of_examples) :
-    return "randR" # you fix this.
+    yes = 0
+    no = 0
+    for data in list_of_examples:
+        # get the last element of data
+        lis = data.split(',')
+
+        if lis[-1] == "yes\n":
+            yes += 1
+        elif lis[-1] == "no\n":
+            no += 1
+    total = yes + no
+    probabilities = [yes/total,no/total]
+    return random.choices(["yes", "no"], probabilities)[0]
 
 
 
@@ -38,12 +64,22 @@ if __name__ == '__main__' :
     with open(fname) as f :
         data = f.readlines()
         if classify_type == "-z" :
-            print(zeroR(data))
             ## change this to use ZeroR to find the most common classification, and then
             ## compare that value to the true classification for each line to compute accuracy.
             ## (fraction of answers that are correct.)
+            correct = 0
+            for ele in data:
+                lis = ele.split(',')
+                if lis[-1]== zeroR(data)+"\n":
+                    correct += 1
+            print(correct/len(data))
         else :
-            print(randR(data))
             ## change this so that, for each line in the dataset, you are calling RandR to generate a prediction
             ## and comparing that to the actual classification. Use this to compute accuracy.
             ## (fraction of answers that are correct.)
+            correct = 0
+            for ele in data:
+                lis = ele.split(',')
+                if lis[-1] == randR(data)+"\n":
+                    correct += 1
+            print(correct / len(data))
