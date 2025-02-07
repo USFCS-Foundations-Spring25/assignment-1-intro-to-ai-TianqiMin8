@@ -48,7 +48,7 @@ def perceptron_training():
             to = example[-1]
             # get output with current weights
             current = bias
-            for i in range(0,5):
+            for i in range(0,len(inputs)):
                 current += weights[i]*inputs[i]
             o = threshold(current)
 
@@ -56,7 +56,7 @@ def perceptron_training():
             print(example,": ",err, ", ",weights)
             if err != 0:
                 converged = False
-                for i in range(0,5):
+                for i in range(0,len(inputs)):
                     if example[i] != 0:
                         weights[i] += alpha * inputs[i] * err
 
