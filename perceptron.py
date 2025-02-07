@@ -35,12 +35,9 @@ def perceptron_training():
     ## each weight will be between -0.05 and 0.05
     for i in range(5):
         weights[i] = (random.random() / 10) - 0.05
-    a=0
+
     converged = False
     while not converged:
-        print(a)
-        a +=1
-
         converged = True
         for example in training_examples:
             ## first, compute actual output
@@ -48,15 +45,14 @@ def perceptron_training():
             to = example[-1]
             # get output with current weights
             current = bias
-            for i in range(0,5):
+            for i in range(0,len(inputs)):
                 current += weights[i]*inputs[i]
             o = threshold(current)
 
             err = to-o
-            print(example,": ",err, ", ",weights)
             if err != 0:
                 converged = False
-                for i in range(0,5):
+                for i in range(0,len(inputs)):
                     if example[i] != 0:
                         weights[i] += alpha * inputs[i] * err
 

@@ -1,3 +1,5 @@
+import argparse
+import os
 import sys
 # import argparse, follow the steps in assignment, use parse_args...
 from string import punctuation
@@ -33,7 +35,12 @@ if __name__== '__main__':
     if len(sys.argv) < 2:
         print("Usage: wordfreq {--strip --convert -pfile=outfile} file")
         sys.exit(-1)
+
+    # TODO may need to change here
     fname = sys.argv[-1] # means give the last thing
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+
     strip = '--strip' in sys.argv
     convert = '--convert' in sys.argv
     for r,d,f in os.walk(path) :
