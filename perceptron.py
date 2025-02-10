@@ -56,7 +56,7 @@ def perceptron_training():
             print(example,": ",err, ", ",weights)
             if err != 0:
                 converged = False
-                for i in range(0,len(inputs)):
+                for i in range(0,len(inputs)):  # CITE: asked Professor Brooks and change the range
                     if example[i] != 0:
                         weights[i] += alpha * inputs[i] * err
 
