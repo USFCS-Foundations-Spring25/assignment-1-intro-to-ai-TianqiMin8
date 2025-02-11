@@ -1,3 +1,5 @@
+import os
+
 import MonteCarlo
 import ZeroR
 import perceptron
@@ -16,7 +18,9 @@ print("Testing wc")
 print("You can run wc from the command line, like so")
 print("wc --strip ~/Documents   or")
 print("wc --strip --pfile=works.pkl ~/Documents")
-# TODO some code to run wc...
+os.system("python wc.py --strip test_wc")
+
+print("")
 
 print("testing perceptron")
 perceptron.perceptron_training()
