@@ -72,7 +72,7 @@ if __name__ == '__main__' :
                 lis = ele.split(',')
                 if lis[-1]== zeroR(data)+"\n":
                     correct += 1
-            print(correct/len(data))
+            print(correct/(len(data)-1))
         else :
             ## change this so that, for each line in the dataset, you are calling RandR to generate a prediction
             ## and comparing that to the actual classification. Use this to compute accuracy.
@@ -82,4 +82,4 @@ if __name__ == '__main__' :
                 lis = ele.split(',')
                 if lis[-1] == randR(data)+"\n":
                     correct += 1
-            print(correct / len(data))
+            print(correct / (len(data)-1))
