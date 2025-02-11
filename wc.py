@@ -4,6 +4,9 @@ import pickle
 import sys
 import re
 
+# just for test
+# import pandas as pd
+
 from string import punctuation
 
 def wordfreq(fname, stripPunc, toLower, nonwords, separator, wordDict) :
@@ -47,7 +50,7 @@ if __name__== '__main__':
     parser.add_argument("--convert", action="store_true", help="change the str to lowercase")
     parser.add_argument("--nonwords", action="store_true", help="remove non-alphebatic strings")
 
-    parser.add_argument("--pfile", type=str) # TODO step3
+    parser.add_argument("--pfile", type=str) # step3
     parser.add_argument("--separator", type=str) # step 4
 
     args = parser.parse_args()
@@ -67,8 +70,10 @@ if __name__== '__main__':
     pickled = False
     # for arg in sys.argv:
     if args.pfile:
-            ofile = args.pfile
-            pickle.dump(wd, open(ofile, 'wb'))   # TODO: what is write as an object?
-            pickled = True
+        ofile = args.pfile
+        pickle.dump(wd, open(ofile, 'wb'))
+        pickled = True
+        # df = pd.read_pickle(ofile)    # CITE: ask llm for how to read pkl file
+        # print(df)
     if not pickled:
         print(wd)
